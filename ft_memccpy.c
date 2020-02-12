@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbarreta <lbarreta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/11 16:04:36 by lbarreta          #+#    #+#             */
-/*   Updated: 2020/02/11 23:02:14 by lbarreta         ###   ########.fr       */
+/*   Created: 2020/02/01 19:18:47 by lbarreta          #+#    #+#             */
+/*   Updated: 2020/02/02 18:44:20 by lbarreta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void	*ft_memccpy(void *dest, void *src, int c, size_t size)
 {
-	t_list *temp;
+	size_t i;
 
-	if (*lst == NULL)
+	i = 0;
+	while (i < size)
 	{
-		*lst = new;
-		new->next = NULL;
-		return ;
+		if (((unsigned char *)src)[i] == ((unsigned char)c))
+		{
+			((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
+			dest = dest + i + 1;
+			return ((void *)dest);
+		}
+		((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
+		i++;
 	}
-	temp = *lst;
-	while (temp->next != NULL)
-		temp = temp->next;
-	temp->next = new;
-	new->next = NULL;
+	return (0);
 }

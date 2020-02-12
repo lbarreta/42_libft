@@ -1,30 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbarreta <lbarreta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/11 16:04:36 by lbarreta          #+#    #+#             */
-/*   Updated: 2020/02/11 23:02:14 by lbarreta         ###   ########.fr       */
+/*   Created: 2020/02/05 00:35:18 by lbarreta          #+#    #+#             */
+/*   Updated: 2020/02/10 17:08:09 by lbarreta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	t_list *temp;
+	int		len_s1;
+	int		len_s2;
+	int		i;
+	char	*ptr;
 
-	if (*lst == NULL)
+	if (!s1 || !s2)
+		return (NULL);
+	len_s1 = ft_strlen((char *)s1);
+	len_s2 = ft_strlen((char *)s2);
+	if (!(ptr = malloc((len_s1 + len_s2 + 1) * sizeof(char))))
+		return (NULL);
+	i = 0;
+	while (i < len_s1)
 	{
-		*lst = new;
-		new->next = NULL;
-		return ;
+		ptr[i] = s1[i];
+		i++;
 	}
-	temp = *lst;
-	while (temp->next != NULL)
-		temp = temp->next;
-	temp->next = new;
-	new->next = NULL;
+	while (i <= (len_s1 + len_s2))
+	{
+		ptr[i] = s2[i - len_s1];
+		i++;
+	}
+	return (ptr);
 }

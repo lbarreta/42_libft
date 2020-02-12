@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbarreta <lbarreta@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lbarreta <lbarreta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/11 15:47:44 by lbarreta          #+#    #+#             */
-/*   Updated: 2020/02/11 15:47:44 by lbarreta         ###   ########.fr       */
+/*   Created: 2020/02/11 22:21:03 by lbarreta          #+#    #+#             */
+/*   Updated: 2020/02/11 22:31:14 by lbarreta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,9 @@
 
 t_list	*ft_lstlast(t_list *lst)
 {
-	t_list *temp;
-
-	temp = lst;
-	while (temp)
-	{
-		temp = temp->next;
-	}
-	return (temp);
+	if (!lst)
+		return (NULL);
+	while (lst->next != NULL)
+		lst = lst->next;
+	return (lst);
 }

@@ -1,28 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbarreta <lbarreta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/11 13:40:01 by lbarreta          #+#    #+#             */
-/*   Updated: 2020/02/11 21:43:11 by lbarreta         ###   ########.fr       */
+/*   Created: 2020/01/22 22:45:53 by lbarreta          #+#    #+#             */
+/*   Updated: 2020/01/22 22:46:04 by lbarreta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int		ft_lstsize(t_list *lst)
+int		ft_atoi(char *str)
 {
-	int		i;
-	t_list	*temp;
+	int neg;
+	int value;
+	int i;
 
-	temp = lst;
 	i = 0;
-	while (temp)
+	neg = 0;
+	value = 0;
+	while (str[i] == ' ' || str[i] == '\n' || str[i] == '\t'
+		|| str[i] == '\v' || str[i] == '\f' || str[i] == '\r')
+		i++;
+	while (str[i] == '+' || str[i] == '-')
 	{
-		temp = temp->next;
+		if (str[i] == '-')
+			neg++;
 		i++;
 	}
-	return (i);
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		value = (value * 10) + (str[i] - '0');
+		i++;
+	}
+	if ((neg % 2) == 1)
+		value = value * (-1);
+	return (value);
 }

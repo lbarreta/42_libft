@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbarreta <lbarreta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/11 16:04:36 by lbarreta          #+#    #+#             */
-/*   Updated: 2020/02/11 23:02:14 by lbarreta         ###   ########.fr       */
+/*   Created: 2020/01/25 00:11:16 by lbarreta          #+#    #+#             */
+/*   Updated: 2020/01/25 00:17:20 by lbarreta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	ft_lstadd_back(t_list **lst, t_list *new)
+int		ft_toupper(int arg)
 {
-	t_list *temp;
+	int i;
 
-	if (*lst == NULL)
+	if (arg >= 'a' && arg <= 'z')
 	{
-		*lst = new;
-		new->next = NULL;
-		return ;
+		i = arg - ('a' - 'A');
+		return (i);
 	}
-	temp = *lst;
-	while (temp->next != NULL)
-		temp = temp->next;
-	temp->next = new;
-	new->next = NULL;
+	else
+		return (arg);
 }

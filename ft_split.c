@@ -6,7 +6,7 @@
 /*   By: lbarreta <lbarreta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 20:16:36 by lbarreta          #+#    #+#             */
-/*   Updated: 2020/02/10 20:32:06 by lbarreta         ###   ########.fr       */
+/*   Updated: 2020/02/19 23:53:34 by lbarreta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,18 @@ int		ft_count_words(char const *s, char c)
 {
 	int i;
 	int words;
+	char *temp;
 
 	i = 0;
 	words = 0;
-	while (s[i] != '\0')
+	temp = ft_strtrim(s, &c);
+	while (temp[i] != '\0')
 	{
-		if (s[i] != c && s[i - 1] == c)
+		if (temp[i] == c && temp[i + 1] != c)
 			words++;
 		i++;
 	}
+	words++;
 	return (words);
 }
 
@@ -32,12 +35,14 @@ int		ft_count_letters(char const *s, char c, int i)
 {
 	int words;
 	int letters;
+	char *temp;
 
 	words = 0;
 	letters = 0;
-	while (s[i] != '\0')
+	temp = ft_strtrim(s, &c);
+	while (temp[i] != '\0')
 	{
-		if (s[i] != c && s[i - 1] == c)
+		if (temp[i] == c && temp[i + 1] != c)
 			words++;
 		if (words == i)
 		{

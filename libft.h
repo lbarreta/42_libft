@@ -6,7 +6,7 @@
 /*   By: lbarreta <lbarreta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 23:25:26 by lbarreta          #+#    #+#             */
-/*   Updated: 2020/02/12 00:32:40 by lbarreta         ###   ########.fr       */
+/*   Updated: 2020/02/19 22:14:53 by lbarreta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct	s_list
 void			ft_bzero(void *str, size_t n);
 void			*ft_calloc(size_t count, size_t size);
 void			*ft_memset(void *str, int c, size_t n);
-void			*ft_memcpy(void *dest, const void *src, size_t size);
+void			*ft_memcpy(void *restrict dest, const void *restrict src, size_t size);
 void			*ft_memccpy(void *dest, void *src, int c, size_t size);
 void			*ft_memchr(void *str, int c, size_t size);
 int				ft_memcmp(void *str1, void *str2, size_t size);
@@ -33,7 +33,7 @@ int				ft_strlen(char *str);
 unsigned int	ft_strlcpy(char *dest, char *src, size_t size);
 unsigned int	ft_strlcat(char *dest, char *src, size_t size);
 int				ft_strncmp(char *s1, char *s2, size_t n);
-char			*ft_strnstr(char *str, char *to_find, size_t len);
+char			*ft_strnstr(const char *str, const char *to_find, size_t len);
 char			*ft_strchr(char *str, int c);
 char			*ft_strrchr(char *str, int c);
 char			*ft_strdup(char *src);

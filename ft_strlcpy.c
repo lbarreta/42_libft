@@ -6,7 +6,7 @@
 /*   By: lbarreta <lbarreta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 17:47:36 by lbarreta          #+#    #+#             */
-/*   Updated: 2020/02/02 18:42:46 by lbarreta         ###   ########.fr       */
+/*   Updated: 2020/02/19 22:10:25 by lbarreta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,18 @@ unsigned int	ft_strlcpy(char *dest, char *src, size_t size)
 	size_t i;
 
 	i = 0;
-	while (src[i] != '\0' && i < (size + 1))
+	if (dest == 0 && src == 0)
+		return (0);
+	if (size > 0)
 	{
-		dest[i] = src[i];
-		i++;
+		while (src[i] != '\0' && i < (size - 1))
+		{
+			dest[i] = src[i];
+			i++;
+		}
+		dest[i] = '\0';
 	}
-	dest[i] = '\0';
 	while (src[i] != '\0')
-	{
 		i++;
-	}
 	return (i);
 }

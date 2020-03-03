@@ -6,13 +6,13 @@
 /*   By: lbarreta <lbarreta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 19:18:47 by lbarreta          #+#    #+#             */
-/*   Updated: 2020/02/02 18:44:20 by lbarreta         ###   ########.fr       */
+/*   Updated: 2020/02/27 22:23:28 by lbarreta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memccpy(void *dest, void *src, int c, size_t size)
+void	*ft_memccpy(void *dest, const void *src, int c, size_t size)
 {
 	size_t i;
 

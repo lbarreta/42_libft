@@ -6,7 +6,7 @@
 /*   By: lbarreta <lbarreta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 20:16:36 by lbarreta          #+#    #+#             */
-/*   Updated: 2020/02/19 23:53:34 by lbarreta         ###   ########.fr       */
+/*   Updated: 2020/02/21 00:40:40 by lbarreta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,50 +14,37 @@
 
 int		ft_count_words(char const *s, char c)
 {
-	int i;
-	int words;
-	char *temp;
+	int		i;
+	int		words;
+	int		is_word;
 
 	i = 0;
 	words = 0;
-	temp = ft_strtrim(s, &c);
-	while (temp[i] != '\0')
+	is_word = 0;
+	if (s == 0)
+		return (0);
+	while (s[i] != '\0')
 	{
-		if (temp[i] == c && temp[i + 1] != c)
+		if (s[i] != c && is_word == 0)
+		{
+			is_word = 1;
 			words++;
+		}
+		if (s[i] == c)
+			is_word = 0;
 		i++;
 	}
-	words++;
 	return (words);
 }
 
-int		ft_count_letters(char const *s, char c, int i)
+int		ft_count_letters(char const *s, char c)
 {
-	int words;
-	int letters;
-	char *temp;
+	int i;
 
-	words = 0;
-	letters = 0;
-	temp = ft_strtrim(s, &c);
-	while (temp[i] != '\0')
-	{
-		if (temp[i] == c && temp[i + 1] != c)
-			words++;
-		if (words == i)
-		{
-			while (s[i] != c && s[i] != '\0')
-			{
-				letters++;
-				i++;
-			}
-			letters++;
-			return (letters);
-		}
+	i = 0;
+	while (s[i] != '\0' && s[i] != c)
 		i++;
-	}
-	letters++;
-	return (letters);
+	return (i);
 }
 
 char	**ft_split(char const *s, char c)
@@ -65,35 +52,25 @@ char	**ft_split(char const *s, char c)
 	int		i;
 	char	**ptr;
 	int		words;
-	int		letters;
+	int		w;
+	int		word_len;
 
 	if (!s)
 		return (NULL);
 	words = ft_count_words(s, c);
-	if (!(ptr = (char **)malloc(sizeof(char *) * words)))
+	if (!(ptr = (char **)malloc(sizeof(char *) * (words + 1))))
 		return (NULL);
 	i = 0;
-	while (i <= words)
+	w = 0;
+	while (s[i] != '\0' && w < words)
 	{
-		letters = ft_count_letters(s, c, i);
-		if (!(ptr[i] = (char *)malloc(sizeof(char) * letters)))
-			return (NULL);
-		i++;
+		while (s[i] == c)
+			i++;
+		word_len = ft_count_letters(s + i, c);
+		ptr[w] = ft_substr(s + i, 0, word_len);
+		i = i + word_len;
+		w++;
 	}
-	i = ft_strlen((char*)s) - 1;
-	while (words >= 0)
-	{
-		letters = ft_count_letters(s, c, i);
-		ptr[words][letters] = '\0';
-		while (letters >= 0)
-		{
-			while (s[i] == c)
-				i--;
-			ptr[words][letters] = s[i];
-			letters--;
-			i--;
-		}
-		words--;
-	}
+	ptr[w] = 0;
 	return (ptr);
 }

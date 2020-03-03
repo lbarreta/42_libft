@@ -6,11 +6,13 @@
 /*   By: lbarreta <lbarreta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 22:47:24 by lbarreta          #+#    #+#             */
-/*   Updated: 2020/01/24 23:17:48 by lbarreta         ###   ########.fr       */
+/*   Updated: 2020/02/27 21:23:10 by lbarreta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strlen(char *str)
+#include "libft.h"
+
+size_t		ft_strlen(const char *str)
 {
 	int i;
 

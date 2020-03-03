@@ -6,7 +6,7 @@
 /*   By: lbarreta <lbarreta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 22:45:53 by lbarreta          #+#    #+#             */
-/*   Updated: 2020/02/19 22:41:38 by lbarreta         ###   ########.fr       */
+/*   Updated: 2020/02/21 01:07:14 by lbarreta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	ft_sign(char *str)
 		return (neg);
 }
 
-int			ft_atoi(char *str)
+int			ft_atoi(const char *str)
 {
 	int				neg;
 	unsigned int	value;
@@ -43,7 +43,7 @@ int			ft_atoi(char *str)
 	while (str[i] == ' ' || str[i] == '\n' || str[i] == '\t'
 		|| str[i] == '\v' || str[i] == '\f' || str[i] == '\r')
 		i++;
-	if ((neg = ft_sign(str + i)) == 0)
+	if ((neg = ft_sign((char *)(str + i))) == 0)
 		return (0);
 	if (str[i] == '+' || str[i] == '-')
 		i++;

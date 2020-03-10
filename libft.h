@@ -6,7 +6,7 @@
 /*   By: lbarreta <lbarreta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 23:25:26 by lbarreta          #+#    #+#             */
-/*   Updated: 2020/02/27 23:39:54 by lbarreta         ###   ########.fr       */
+/*   Updated: 2020/03/03 21:38:33 by lbarreta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ int					ft_memcmp(const void *str1, const void *str2, size_t size);
 void				*ft_memmove(void *dest, const void *src, size_t len);
 size_t				ft_strlen(const char *str);
 size_t				ft_strlcpy(char *dest,
-					char *src, size_t size);
+					const char *src, size_t size);
 size_t				ft_strlcat(char *dest,
-					char *src, size_t size);
+					const char *src, size_t size);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 char				*ft_strnstr(const char *str,
 					const char *to_find, size_t len);

@@ -6,7 +6,7 @@
 /*   By: lbarreta <lbarreta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/12 00:31:43 by lbarreta          #+#    #+#             */
-/*   Updated: 2020/02/17 22:09:16 by lbarreta         ###   ########.fr       */
+/*   Updated: 2020/03/03 22:20:13 by lbarreta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*ptr;
 
-	if (!lst)
+	if (!lst || !f)
 		return (NULL);
 	if (!(ptr = ft_lstnew(f(lst->content))))
 	{

@@ -6,13 +6,13 @@
 /*   By: lbarreta <lbarreta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 23:38:37 by lbarreta          #+#    #+#             */
-/*   Updated: 2020/02/27 20:49:03 by lbarreta         ###   ########.fr       */
+/*   Updated: 2020/03/03 21:38:38 by lbarreta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t			ft_strlcat(char *dest, char *src, size_t size)
+size_t			ft_strlcat(char *dest, const char *src, size_t size)
 {
 	size_t i;
 	size_t j;
